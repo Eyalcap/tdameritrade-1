@@ -97,7 +97,7 @@ def authentication(client_id, redirect_uri, tdauser=None, tdapass=None):
             "client_id": client_id,
             "redirect_uri": redirect_uri,
         },
-    )
+    timeout=60)
     if resp.status_code != 200:
         raise Exception("Could not authenticate!")
     return resp.json()
@@ -112,7 +112,7 @@ def access_token(refresh_token, client_id):
             "refresh_token": refresh_token,
             "client_id": client_id,
         },
-    )
+    timeout=60)
     if resp.status_code != 200:
         raise Exception("Could not authenticate!")
     return resp.json()
